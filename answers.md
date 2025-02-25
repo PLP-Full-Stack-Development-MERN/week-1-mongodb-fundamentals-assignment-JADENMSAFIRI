@@ -3,11 +3,11 @@ use library;
 
 // Create and insert books into the collection
 db.books.insertMany([
-  { title: "The Great Gatsby", author: "F. Scott Fitzgerald", publishedYear: 1925, genre: "Fiction", ISBN: "9780743273565" },
-  { title: "1984", author: "George Orwell", publishedYear: 1949, genre: "Dystopian", ISBN: "9780451524935" },
-  { title: "The Catcher in the Rye", author: "J.D. Salinger", publishedYear: 1951, genre: "Fiction", ISBN: "9780316769488" },
-  { title: "The Road", author: "Cormac McCarthy", publishedYear: 2006, genre: "Post-apocalyptic", ISBN: "9780307387899" },
-  { title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997, genre: "Fantasy", ISBN: "9780590353427" }
+{ title: "The Great Gatsby", author: "F. Scott Fitzgerald", publishedYear: 1925, genre: "Fiction", ISBN: "9780743273565" },
+{ title: "1984", author: "George Orwell", publishedYear: 1949, genre: "Dystopian", ISBN: "9780451524935" },
+{ title: "The Catcher in the Rye", author: "J.D. Salinger", publishedYear: 1951, genre: "Fiction", ISBN: "9780316769488" },
+{ title: "The Road", author: "Cormac McCarthy", publishedYear: 2006, genre: "Post-apocalyptic", ISBN: "9780307387899" },
+{ title: "Harry Potter and the Sorcerer's Stone", author: "J.K. Rowling", publishedYear: 1997, genre: "Fantasy", ISBN: "9780590353427" }
 ]);
 
 // Retrieve all books
@@ -43,12 +43,12 @@ db.orders.insertOne({ userId: ObjectId("someUserId"), productId: ObjectId("someP
 
 // Aggregation to find the total number of books per genre
 db.books.aggregate([
-  { $group: { _id: "$genre", totalBooks: { $sum: 1 } } }
+{ $group: { _id: "$genre", totalBooks: { $sum: 1 } } }
 ]);
 
 // Calculate the average published year of all books
 db.books.aggregate([
-  { $group: { _id: null, avgPublishedYear: { $avg: "$publishedYear" } } }
+{ $group: { _id: null, avgPublishedYear: { $avg: "$publishedYear" } } }
 ]);
 
 // Identify the top-rated book
